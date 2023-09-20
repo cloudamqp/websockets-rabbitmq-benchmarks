@@ -1,9 +1,9 @@
 {
-  "name": "javascript",
+  "name": "web-mqtt",
   "type": "module",
   "version": "1.0.0",
   "description": "benchmarks for web-amqp web-stomp web-mqtt",
-  "main": "ws.js",
+  "main": "idle_connections.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
