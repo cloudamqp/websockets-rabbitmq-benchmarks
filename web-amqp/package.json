@@ -1,0 +1,16 @@
+{
+  "name": "web-amqp",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "idle_connections.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nyior Clement",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "ws": "^8.14.2"
+  }
+}
