@@ -1,0 +1,16 @@
+{
+  "name": "javascript",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "benchmarks for web-amqp web-stomp web-mqtt",
+  "main": "ws.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nyior Clement",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "mqtt": "^5.0.5"
+  }
+}
