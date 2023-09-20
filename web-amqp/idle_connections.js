@@ -28,5 +28,6 @@ async function connectClient(index) {
 }
 
 for(let i = 0; i < connections; i++) {
-    connectClient(i)
+    await connectClient(i)
 }
+
