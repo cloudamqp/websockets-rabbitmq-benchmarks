@@ -13,6 +13,6 @@ Alives after connection establishment with the `idle_connections.js` script: `no
 
 ## Stress testing
 You can also set up a 1:1 topology between n publishers and n 
-subscribers with the `connections_with_messages.js` script: script: `node  connections_with_messages.js connections` - where connections is an int
+subscribers with the `connections_with_messages.js` script: `node  connections_with_messages.js connections` - where connections is an int
 
-Each publisher will publish a qos1 message to qos1 subscriber every 10 secs.
+Each publisher will publish a qos0 message to qos1 subscriber every 10 secs.

@@ -33,7 +33,7 @@ function createPublishers(index, topic) {
         console.log(`CLIENT CONNECTED: ${clientId}`)
         setInterval(() => {
             client.publish(topic, `Hello ${index}`)
-        }, 5000)
+        }, 10000)
     })
 }
 
