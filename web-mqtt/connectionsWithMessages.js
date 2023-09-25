@@ -1,28 +1,14 @@
 import * as mqtt from "mqtt";
 import {} from 'dotenv/config'
+import { clientSettings } from './config.js';
 
 
-if (process.argv.length !== 3) {
-    console.log("Usage: node connections_with_messages.js CONNECTIONS")
-    process.exit()
-}
+const host = clientSettings['host']
+let options = clientSettings['options']
 
-const host = process.env.MQTT_BROKER
-const username = process.env.USERNAME
-const password = process.env.PASSWORD
-const connections = parseInt(process.argv[2])
-let options = {
-    keepalive: 300,
-    clean: true,
-    username: username,
-    password: password,
-    connectTimeout: 30 * 1000,
-}
-
-function createPublishers(index, topic) {
+function publish(index, topic) {
     let clientId = `publisher_${index.toString()}`
     options['clientId'] = clientId
-    
     const client = mqtt.connect(host, options)
     
     client.on('error', (err) => {
@@ -37,10 +23,9 @@ function createPublishers(index, topic) {
     })
 }
 
-function createSubscribers(index, topic) {
+function subscribe(index, topic) {
     let clientId = `subscriber_${index.toString()}`
     options['clientId'] = clientId
-    
     const client = mqtt.connect(host, options)
     
     client.on('error', (err) => {
@@ -60,14 +45,17 @@ function createSubscribers(index, topic) {
     })
 }
 
-// Create 1:1 topology between n number of publishers and n number of subscribers
-// Each publisher will publish a message to a topic every 5 secs
-// E.g if connections = 10 => 10 pubs, 10 subs
-for(let i = 0; i < connections; i++) {
-    let topic = `topic_${i.toString()}`
-    createSubscribers(i, topic)
-    createPublishers(i, topic)
+// Test with data flowing every 5 secs in a 1:1 topology between n number of 
+// publishers and n number of subscribers
+function connectionsWithMessages(connections) {
+    for(let i = 0; i < connections; i++) {
+        let topic = `topic_${i.toString()}`
+        publish(i, topic)
+        subscribe(i, topic)
+    } 
 }
+
+export default connectionsWithMessages
 
 
 
