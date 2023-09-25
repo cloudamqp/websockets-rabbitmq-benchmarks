@@ -10,11 +10,11 @@
     "ws": "^8.14.2"
   },
   "scripts": {
-    "stomp-connections": "cd web-stomp && NODE_ENV=connections node index.js",
-    "mqtt-messages": "cd web-mqtt && NODE_ENV=messages node index.js",
-    "amqp-connections": "cd web-amqp && NODE_ENV=connections node index.js",
-    "stomp-messages": "cd web-stomp && NODE_ENV=messages node index.js",
-    "mqtt-connections": "cd web-mqtt && NODE_ENV=connections node index.js",
-    "amqp-messages": "cd web-amqp && NODE_ENV=messages node index.js"
+    "stomp-connections": "cd web_stomp && NODE_ENV=connections node index.js",
+    "mqtt-messages": "cd web_mqtt && NODE_ENV=messages node index.js",
+    "amqp-connections": "cd web_amqp && NODE_ENV=connections node index.js",
+    "stomp-messages": "cd web_stomp && NODE_ENV=messages node index.js",
+    "mqtt-connections": "cd web_mqtt && NODE_ENV=connections node index.js",
+    "amqp-messages": "cd web_amqp && NODE_ENV=messages node index.js"
   }
 }
