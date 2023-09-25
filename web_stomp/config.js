@@ -8,7 +8,6 @@ const username = process.env.USERNAME
 const password = process.env.PASSWORD
 const vhost = process.env.VHOST
 const nodeEnv = process.env.NODE_ENV
-const connections = process.env.CONNECTIONS || 1
 
 const clientSettings = {
   brokerURL: `wss://${broker}/ws`,
@@ -28,4 +27,4 @@ const clientSettings = {
   }
 }
 
-export { nodeEnv, clientSettings, connections }
+export { nodeEnv, clientSettings }
