@@ -1,6 +1,6 @@
 import { nodeEnv, clientSettings, connections } from './config.js';
-import idleConnections from './idleConnections.js';
-import connectionsWithMessages from './connectionsWithMessages.js';
+import idleConnections from './idle_connections.js';
+import connectionsWithMessages from './connections_with_messages.js';
 
 switch (nodeEnv) {
   case 'connections':
