@@ -1,6 +1,7 @@
 import * as mqtt from "mqtt";
 import {} from 'dotenv/config'
 import { clientSettings } from './config.js';
+import randomInterval from '../random_interval.js'
 
 
 const host = clientSettings['host']
@@ -19,7 +20,7 @@ function publish(index, topic) {
         console.log(`CLIENT CONNECTED: ${clientId}`)
         setInterval(() => {
             client.publish(topic, `Hello ${index}`)
-        }, 5000)
+        }, randomInterval)
     })
 }
 
