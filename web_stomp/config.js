@@ -18,12 +18,9 @@ const clientSettings = {
   },
   heartbeatIncoming: 0,
   heartbeatOutgoing: 0,
-  debug: (str) => {
-    console.log(str)
-  },
   onStompError: (frame) => {
-    console.error('Broker reported error: ' + frame.headers['message']);
-    console.error('Additional details: ' + frame.body);
+    console.error(`Broker reported error: ${frame.headers['message']}`)
+    console.error(`Additional details: ${frame.body}`)
   }
 }
 
