@@ -21,6 +21,7 @@ function connection(index) {
 }
 
 function idleConnections(connections) {
+    console.log(`connections: ${connections}`)
     for(let i = 0; i < connections; i++) {
         connection(i)
     }  
