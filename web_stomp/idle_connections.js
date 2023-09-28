@@ -5,7 +5,7 @@ function idleConnections (clientSettings, connections) {
   for (let i = 0; i < connections; i++) {
     const client = new Client(clientSettings)
     client.onConnect = () => {
-      console.log(`Connected to broker ${clientSettings.brokerURL}`)
+      console.log(`Connection ${i} established`)
     }
     client.activate()
   }
