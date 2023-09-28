@@ -9,7 +9,7 @@ const nodeEnv = process.env.NODE_ENV
 const clientSettings = {
     host: host,
     options: {
-        keepalive: 0,
+        keepalive: 60000,
         clean: true,
         username: username,
         password: password,
