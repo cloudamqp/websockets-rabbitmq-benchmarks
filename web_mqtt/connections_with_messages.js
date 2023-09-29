@@ -25,7 +25,7 @@ function publish(index, topic) {
 }
 
 function subscribe(index, topic) {
-    let clientId = `subscriber_${index.toString()}`
+    let clientId = Math.random()
     options['clientId'] = clientId
     const client = mqtt.connect(host, options)
 
@@ -34,7 +34,7 @@ function subscribe(index, topic) {
         client.end()
     })
     client.on('connect', () => {
-        console.log(`CLIENT CONNECTED: ${clientId}`)
+        console.log(`CLIENT CONNECTED: ${index}`)
         client.subscribe(topic, { qos: 1 }, function (err) {
             if (err) {
                 console.log('SUBSCRIPTION ERROR: ', err)
