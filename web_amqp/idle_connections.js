@@ -1,20 +1,12 @@
-import { amqp } from './config.js'
+import { AMQPWebSocketClient } from './amqp-websocket-client.mjs'
 
-
-async function connection(index) {
-    try {
-        let clientId = `publisher_${index.toString()}`
-        await amqp.connect()
-        console.log(`CLIENT CONNECTED: ${clientId}`)
-    } catch (err) {
-        console.error("CONNECTION ERROR", err)
-    }
-}
-
-async function idleConnections(connections) {
+async function idleConnections(clientSettings, connections) {
     for(let i = 0; i < connections; i++) {
-        await connection(i)
-    } 
+        const amqp = new AMQPWebSocketClient(clientSettings.host, clientSettings.username, clientSettings.username, clientSettings.password)
+        amqp.connect().then(() => {
+            console.log(`Connection number ${i} established`)
+        })
+    }
 }
 
 export default idleConnections
