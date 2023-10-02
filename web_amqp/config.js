@@ -3,15 +3,12 @@ import WebSocket from 'ws';
 
 Object.assign(global, { WebSocket });
 
-class ClientSettings {
-  constructor() {
-    this.host = process.env.AMQP_BROKER
-    this.username = process.env.USERNAME
-    this.password = process.env.PASSWORD
-  }
-}
-
 const nodeEnv = process.env.NODE_ENV
-const clientSettings = new ClientSettings()
+
+const clientSettings = {
+  host: process.env.AMQP_BROKER,
+  username: process.env.USERNAME,
+  password: process.env.PASSWORD
+}
 
 export { nodeEnv, clientSettings }
