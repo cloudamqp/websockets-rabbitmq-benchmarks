@@ -8,22 +8,21 @@ let options = clientSettings['options']
 
 function connection(index) {
     let clientId = Math.random()
-    options['clientId'] = clientId
+    options.clientId = clientId
     const client = mqtt.connect(host, options)
 
     client.on('error', (err) => {
-        console.log('CONNECTION ERROR: ', err)
+        console.log('Connection error: ', err)
         client.end()
     })
     client.on('connect', () => {
-        console.log(`CLIENT CONNECTED: ${index}`)
+        console.log(`Connection ${index} established`)
     })
 }
 
 function idleConnections(connections) {
-    console.log(`connections: ${connections}`)
-    for(let i = 0; i < connections; i++) {
-        connection(i)
+    for(let index = 0; index < connections; index++) {
+        connection(index)
     }
 }
 

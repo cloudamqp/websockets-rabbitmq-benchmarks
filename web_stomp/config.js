@@ -3,18 +3,14 @@ import dotenv from 'dotenv'
 Object.assign(global, { WebSocket })
 dotenv.config()
 
-const broker = process.env.BROKER
-const username = process.env.USERNAME
-const password = process.env.PASSWORD
-const vhost = process.env.VHOST
 const nodeEnv = process.env.NODE_ENV
 
 const clientSettings = {
-  brokerURL: `wss://${broker}/ws`,
+  brokerURL: `wss://${process.env.BROKER}/ws`,
   connectHeaders: {
-    login: username,
-    passcode: password,
-    host: vhost,
+    login: process.env.USERNAME,
+    passcode: process.env.PASSWORD,
+    host: process.env.VHOST,
   },
   heartbeatIncoming: 0,
   heartbeatOutgoing: 0,
