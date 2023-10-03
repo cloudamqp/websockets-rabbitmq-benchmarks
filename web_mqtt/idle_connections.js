@@ -19,9 +19,8 @@ function connection(i) {
 }
 
 function idleConnections(connections) {
-    console.log(`connections: ${connections}`)
-    for(let i = 0; i < connections; i++) {
-        connection(i)
+    for(let index = 0; index < connections; index++) {
+        connection(index)
     }
 }
 

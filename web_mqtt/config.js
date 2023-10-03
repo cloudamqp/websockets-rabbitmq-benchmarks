@@ -1,17 +1,13 @@
 import {} from 'dotenv/config'
 
-
-const host = process.env.MQTT_BROKER
-const username = process.env.USERNAME
-const password = process.env.PASSWORD
 const nodeEnv = process.env.NODE_ENV
 
 const clientSettings = {
-    host: host,
+    host: process.env.MQTT_BROKER,
     options: {
         keepalive: 0,
-        username: username,
-        password: password,
+        username: process.env.USERNAME,
+        password: process.env.PASSWORD,
         connectTimeout: 60000,
         reconnectPeriod: 20000,
         rejectUnauthorized: false

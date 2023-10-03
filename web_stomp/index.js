@@ -10,10 +10,10 @@ const connections = parseInt(process.argv[2])
 
 switch (nodeEnv) {
   case 'connections':
-    idleConnections(clientSettings, connections)
+    idleConnections(connections)
     break
   case 'messages':
-    connectionsWithMessages(clientSettings, connections)
+    connectionsWithMessages(connections)
     break
   default:
     console.log('You have to decide which benchmark to run, connections or messages')

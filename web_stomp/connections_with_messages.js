@@ -1,18 +1,18 @@
 import { Client } from '@stomp/stompjs'
+import { clientSettings } from './config.js';
 import randomInterval from '../random_interval.js'
 Object.assign(global, { WebSocket })
 
-function connectionsWithMessages (clientSettings, connections) {
-  for (let i = 0; i < connections; i++) {
+function connectionsWithMessages (connections) {
+  for (let index = 0; index < connections; index++) {
     const client = new Client(clientSettings)
     client.onConnect = () => {
-      console.log(`Connected to broker ${clientSettings.brokerURL}`)
+      console.log(`Connection ${index} established`)
       client.subscribe('/queue/test', message => {
-        console.log(`Incoming message: ${message.body}`)
+        console.log(`${message.body}`)
       })
       setInterval(() => {
-        client.publish({ destination: '/queue/test', body: 'test message' })
-        console.log('Message published')
+        client.publish({ destination: '/queue/test', body: `Message from connection ${index}` })
       }, randomInterval())
     }
     client.activate()
