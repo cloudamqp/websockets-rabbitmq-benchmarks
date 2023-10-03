@@ -9,20 +9,15 @@ Comparing the performances of web-mqtt, web-stomp and web-amqp. Metrics
 ## Usage
 You can either test idle connections or connections with messages
 
-### Testing connections
+- Create n idle web-mqtt, web-stomp or web-amqp connections with:
+    ```npm run [command] [number of connections]```
 
-You can create n number of idle web-mqtt, web-stomp or web-amqp connections with:
-`npm run [command] [number of connections]`
+    Where [command] is one of: `mqtt-connections stomp-connections amqp-connections`
 
-Where [command] is one of: `mqtt-connections stomp-connections amqp-connections`
+- Create n connections(with messages flowing)  with:
+    ```npm run [command] [number of connections]```
 
-## Stress testing
-
-You can also set up a 1:1 topology between n publishers and n 
-subscribers with:
-`npm run [command] [number of connections]`
-
-Where [command] is one of: `mqtt-messages stomp-messages amqp-messages`
+    Where [command] is one of: `mqtt-messages stomp-messages amqp-messages`
 
 ## Bottlenecks
 
