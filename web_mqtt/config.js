@@ -9,11 +9,12 @@ const nodeEnv = process.env.NODE_ENV
 const clientSettings = {
     host: host,
     options: {
-        // keepalive: 2000,
-        // clean: false,
+        keepalive: 0,
         username: username,
         password: password,
-        // connectTimeout: 60000,
+        connectTimeout: 60000,
+        reconnectPeriod: 20000,
+        rejectUnauthorized: false
     }
 }
 

@@ -4,56 +4,41 @@ import { clientSettings } from './config.js';
 import randomInterval from '../random_interval.js'
 
 
-const host = clientSettings['host']
-let options = clientSettings['options']
+const interval = randomInterval()
 
-function publish(index, topic) {
-    let clientId = Math.random()
-    options['clientId'] = clientId
-    const client = mqtt.connect(host, options)
+function connect(i) {
+    const client = mqtt.connect(
+        clientSettings.host, 
+        clientSettings.options
+    )
+    const topic = `topic_${i.toString()}`
+  
+    client.on('connect', function () {
+      console.log(`Connection number ${i} established`)
+      client.subscribe(topic, { qos: 1 }, function (err) {
+        if (err) {
+          console.log('Could not subscribe: ', err)
+        }
+      })
+      setInterval(() => {
+        client.publish(topic, `Message from connection ${i}`)
+      }, interval)
+    })
 
-    client.on('error', (err) => {
-        console.log('CONNECTION ERROR: ', err)
-        client.end()
-    })
-    client.on('connect', () => {
-        console.log(`CLIENT CONNECTED: ${index}`)
-        setInterval(() => {
-            client.publish(topic, `Hello ${index}`)
-        }, randomInterval)
-    })
-}
-
-function subscribe(index, topic) {
-    let clientId = Math.random()
-    options['clientId'] = clientId
-    const client = mqtt.connect(host, options)
-
-    client.on('error', (err) => {
-        console.log('CONNECTION ERROR: ', err)
-        client.end()
-    })
-    client.on('connect', () => {
-        console.log(`CLIENT CONNECTED: ${index}`)
-        client.subscribe(topic, { qos: 1 }, function (err) {
-            if (err) {
-                console.log('SUBSCRIPTION ERROR: ', err)
-            }
-        })
-    })
     client.on('message', function (topic, message) {
-        console.log(`TOPIC: ${topic} -- MESSAGE: ${message}`)
+        console.log(message.toString())
     })
-}
 
-// Test with data flowing every 5 secs in a 1:1 topology between n number of
-// publishers and n number of subscribers
+    client.on('error', function(err) {
+      console.log('ERROR: ', err)
+      client.end();
+    });
+}
+  
 function connectionsWithMessages(connections) {
-    for(let i = 0; i < connections; i++) {
-        let topic = `topic_${i.toString()}`
-        publish(i, topic)
-        subscribe(i, topic)
-    }
+  for(let i = 0; i < connections; i++) {
+    connect(i)
+  }
 }
 
 export default connectionsWithMessages
