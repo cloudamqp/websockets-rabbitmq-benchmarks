@@ -17,7 +17,7 @@ async function connectionsWithMessages (connections) {
         await q.subscribe({noAck: true}, onMessage)
 
         setInterval(() => {
-            q.publish(`Message from connection ${i}`, {deliveryMode: 2})
+            q.publish(`Message from connection ${i}`, {deliveryMode: 1})
         }, randomInterval())
     }
 }
