@@ -14,7 +14,7 @@ async function connectionsWithMessages (connections) {
         console.log(`Connection number ${i} established`)
         const ch = await conn.channel()
         const q = await ch.queue(`queue_${clientId}`)
-        await q.subscribe({noAck: true}, onMessage)
+        await q.subscribe({noAck: true, exclusive: true}, onMessage)
 
         setInterval(() => {
             q.publish(`Message from connection ${i}`, {deliveryMode: 1})
