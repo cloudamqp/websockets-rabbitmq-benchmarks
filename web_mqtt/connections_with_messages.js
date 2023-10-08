@@ -15,7 +15,7 @@ function connect(i) {
   
     client.on('connect', function () {
       console.log(`Connection number ${i} established`)
-      client.subscribe(topic, { qos: 1 }, function (err) {
+      client.subscribe(topic, { qos: 0 }, function (err) {
         if (err) {
           console.log('Could not subscribe: ', err)
         }

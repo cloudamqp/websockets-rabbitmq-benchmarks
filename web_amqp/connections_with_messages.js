@@ -9,7 +9,7 @@ function onMessage (msg) {
 async function connectionsWithMessages (connections) {
     for (let i = 0; i < connections; i++) {
         const amqp = new AMQPWebSocketClient(clientSettings.host, clientSettings.username, clientSettings.username, clientSettings.password)
-        const clientId = Math.random()
+        const clientId = Math.floor(Date.now() * Math.random())
         const conn = await amqp.connect()
         console.log(`Connection number ${i} established`)
         const ch = await conn.channel()
