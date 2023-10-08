@@ -21,7 +21,7 @@ async function connectionsWithMessages (connections) {
                 q.publish(`Message from connection ${i}`, {deliveryMode: 1})
             }, randomInterval())
         } catch (error) {
-            console.log(`error: ${error}`)
+            console.log(`error: ${error.name}`)
         }
     }
 }
