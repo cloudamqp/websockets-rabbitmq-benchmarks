@@ -12,6 +12,7 @@ const clientSettings = {
     passcode: process.env.PASSWORD,
     host: process.env.VHOST,
   },
+  reconnectDelay: 300,
   heartbeatIncoming: 0,
   heartbeatOutgoing: 0,
   onStompError: (frame) => {
