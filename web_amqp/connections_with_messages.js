@@ -13,7 +13,7 @@ async function connectionsWithMessages (connections) {
         const conn = await amqp.connect()
         console.log(`Connection number ${i} established`)
         const ch = await conn.channel()
-        const q = await ch.queue(`queue_${clientId}`, {durable: false})
+        const q = await ch.queue(`queue_${clientId}`, {durable: false, autoDelete: true})
         await q.subscribe({noAck: true, exclusive: true}, onMessage)
 
         setInterval(() => {
