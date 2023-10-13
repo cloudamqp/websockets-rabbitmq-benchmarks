@@ -12,13 +12,9 @@ const clientSettings = {
     passcode: process.env.PASSWORD,
     host: process.env.VHOST,
   },
-  reconnectDelay: 300,
+  reconnectDelay: 100,
   heartbeatIncoming: 0,
   heartbeatOutgoing: 0,
-  onStompError: (frame) => {
-    console.error(`Broker reported error: ${frame.headers['message']}`)
-    console.error(`Additional details: ${frame.body}`)
-  }
 }
 
 export { nodeEnv, clientSettings }
