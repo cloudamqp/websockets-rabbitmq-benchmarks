@@ -8,6 +8,9 @@ Comparing the performances of web-mqtt, web-stomp and web-amqp. Metrics
 
 ## Environment variables
 
+The below values can be set either as OS env vars or in a `.env`
+file. See [example](web_mqtt/.env-example)
+
 - set `BROKER_USERNAME` and `BROKER_PASSWORD` for credentials no matter which protocol you choose
 - set `MQTT_BROKER`, `STOMP_BROKER` or `AMQP_BROKER` respectively for
   the full websocket URL (including protocol, host, port and path). For
