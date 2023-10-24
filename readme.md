@@ -9,7 +9,7 @@ Comparing the performances of web-mqtt, web-stomp and web-amqp. Metrics
 ## Environment variables
 
 - set `BROKER_USERNAME` and `BROKER_PASSWORD` for credentials no matter which protocol you choose
-- set `MQTT_BROKER`, `STOM_BROKER` or `AMQP_BROKER` respectively for
+- set `MQTT_BROKER`, `STOMP_BROKER` or `AMQP_BROKER` respectively for
   the full websocket URL (including protocol, host, port and path). For
   example ```export STOMP_BROKER=ws://127.0.0.1:15674/ws```
 
