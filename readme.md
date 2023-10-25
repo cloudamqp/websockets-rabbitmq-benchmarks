@@ -6,6 +6,18 @@ Comparing the performances of web-mqtt, web-stomp and web-amqp. Metrics
 - Navigate into project: `cd websockets-rabbitmq-benchmarks`
 - Install dependencies: `npm install`
 
+## Environment variables
+
+The below values can be set either as OS env vars or in a `.env`
+file. See [example](web_mqtt/.env-example)
+
+- set `BROKER_USERNAME` and `BROKER_PASSWORD` for credentials no matter which protocol you choose
+- set `MQTT_BROKER`, `STOMP_BROKER` or `AMQP_BROKER` respectively for
+  the full websocket URL (including protocol, host, port and path). For
+  example ```export STOMP_BROKER=ws://127.0.0.1:15674/ws```
+
+- set `VHOST` for the STOMP client
+
 ## Usage
 You can either test idle connections or connections with messages
 
