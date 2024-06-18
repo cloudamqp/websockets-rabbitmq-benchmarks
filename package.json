@@ -7,7 +7,7 @@
     "dotenv": "^16.3.1",
     "express": "^4.19.2",
     "mqtt": "^5.0.5",
-    "ws": "^8.14.2"
+    "ws": "^8.17.1"
   },
   "scripts": {
     "stomp-connections": "cd web_stomp && NODE_ENV=connections node index.js",
