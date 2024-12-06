@@ -5,7 +5,7 @@
   "dependencies": {
     "@stomp/stompjs": "^7.0.0",
     "dotenv": "^16.3.1",
-    "express": "^4.21.1",
+    "express": "^4.21.2",
     "mqtt": "^5.0.5",
     "ws": "^8.17.1"
   },
